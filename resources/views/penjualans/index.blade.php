@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('patrial.template')
 
 @section('content')
 
@@ -76,7 +76,10 @@
                             <td>Rp {{ number_format($penjualan->uang_bayar, 0, ',', '.') }}</td>
                             <td>Rp {{ number_format($penjualan->kembali, 0, ',', '.') }}</td>
                             <td>
-                                <a href="#" class="btn btn-primary lihat-struk" data-id="{{ $penjualan->id_penjualan }}">Lihat Struk</a>
+                            <a href="#" class="btn btn-primary btn-sm lihat-struk" data-id="{{ $penjualan->id_penjualan }}" title="Lihat Struk">
+    <i class="bi bi-receipt"></i>
+</a>
+
                             
                            
                                 <form action="{{ route('penjualans.destroy', $penjualan->id_penjualan) }}" method="POST" class="d-inline">
@@ -90,7 +93,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="text-center">Tidak ditemukan Data.</td>
+                            <td colspan="8" class="text-center">Data Penjualan Tidak Temukan.</td>
                         </tr>
                     @endforelse
                 </tbody>

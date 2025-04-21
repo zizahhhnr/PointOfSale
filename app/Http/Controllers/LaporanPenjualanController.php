@@ -36,7 +36,7 @@ class LaporanPenjualanController extends Controller
         $bulan = $request->bulan;
         $tahun = $request->tahun;
 
-        $query = Penjualan::with(['details.produk']);
+        $query = Penjualan::with(['details.produk'])->orderBy('created_at', 'desc');
 
         if ($bulan) {
             $query->whereMonth('tgl_penjualan', $bulan);

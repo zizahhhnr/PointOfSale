@@ -72,6 +72,7 @@ class ProdukController extends Controller
         'nama_produk' => 'required|max:255',
         'id_kategori' => 'required|exists:kategoris,id_kategori',
         'id_supplier' => 'required|exists:suppliers,id_supplier',
+        'harga_dasar' => 'required|numeric',
         'harga' => 'required|numeric',
         'stok' => 'required|integer',
     ]);
@@ -90,6 +91,7 @@ class ProdukController extends Controller
         'nama_produk' => $request->nama_produk,
         'id_kategori' => $request->id_kategori,
         'id_supplier' => $request->id_supplier,
+        'harga_dasar' => $request->harga_dasar,
         'harga' => $request->harga,
         'stok' => $request->stok,
     ]);
@@ -139,6 +141,7 @@ class ProdukController extends Controller
             'nama_produk' => 'required|max:255',
             'id_kategori' => 'required|exists:kategoris,id_kategori',
             'id_supplier' => 'required|exists:suppliers,id_supplier',
+            'harga_dasar' => 'required|numeric',
             'harga' => 'required|numeric',
             'stok' => 'required|integer',
         ]);
@@ -148,6 +151,7 @@ class ProdukController extends Controller
             'nama_produk' => $request->nama_produk,
             'id_kategori' => $request->id_kategori,
             'id_supplier' => $request->id_supplier,
+            'harga_dasar' => $request->harga_dasar,
             'harga' => $request->harga,
             'stok' => $request->stok,
         ]);

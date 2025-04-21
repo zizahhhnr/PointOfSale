@@ -52,6 +52,10 @@
 
         </div>
         <div class="mb-3">
+            <label for="harga_dasar" class="form-label">Harga Dasar:</label>
+            <input type="number" class="form-control" id="harga_dasar" name="harga_dasar" placeholder="Masukkan Harga Awal Produk" required>
+        </div>
+        <div class="mb-3">
             <label for="harga" class="form-label">Harga:</label>
             <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" required>
         </div>

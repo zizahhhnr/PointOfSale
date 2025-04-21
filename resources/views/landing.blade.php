@@ -32,9 +32,6 @@
     <div class="w-1/3">
         <h2 class="text-4xl font-bold text-blue-700">Selamat Datang!</h2>
         <p class="text-gray-600 mt-3">Kasir dan Admin PayPoint</p>
-        <a href="{{ route('register') }}" class="mt-5 inline-block bg-blue-600 text-white px-6 py-2 rounded-md">
-            Register
-        </a>
     </div>
 
     <!-- Image -->

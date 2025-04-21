@@ -35,6 +35,7 @@
                         <th>Nama Produk</th>
                         <th>Nama Kategori</th>
                         <th>Nama Supplier</th>
+                        <th>Harga Dasar</th>
                         <th>Harga</th>
                         <th>Stok</th>
                         <th>Aksi</th>
@@ -48,20 +49,29 @@
                             <td>{{ $produk->nama_produk }}</td>
                             <td>{{ $produk->kategori->nama_kategori }}</td>
                             <td>{{ $produk->supplier->nama_supplier }}</td>
+                            <td>Rp {{ number_format($produk->harga_dasar, 2, ',', '.') }}</td>
                             <td>Rp {{ number_format($produk->harga, 2, ',', '.') }}</td>
                             <td>{{ $produk->stok }}</td>
+                           
                             <td>
-                                <a href="{{ route('produks.edit', $produk->id_produk) }}" class="btn btn-sm btn-primary me-1">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </a>
-                                <form action="{{ route('produks.destroy', $produk->id_produk) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+    @if(Auth::user()->isAdmin())
+        <a href="{{ route('produks.edit', $produk->id_produk) }}" class="btn btn-sm btn-primary me-1">
+            <i class="bi bi-pencil-fill"></i>
+        </a>
+        <form action="{{ route('produks.destroy', $produk->id_produk) }}" method="POST" class="d-inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
+                <i class="bi bi-trash"></i>
+            </button>
+        </form>
+    @else
+        <span class="text-muted">-</span>
+    @endif
+</td>
+
+
+                            
                         </tr>
                     @empty
                         <tr>

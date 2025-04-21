@@ -38,6 +38,10 @@ Route::resource('kategoris', KategoriController::class);
 use App\Http\Controllers\SupplierController;
 Route::resource('suppliers', SupplierController::class);
 
+use App\Http\Controllers\StockController;
+Route::resource('stocks', StockController::class);
+
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

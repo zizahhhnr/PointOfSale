@@ -16,6 +16,7 @@ class Produk extends Model
         'nama_produk',
         'id_kategori',
         'id_supplier',
+        'harga_dasar',
         'harga',
         'stok'
     ];
@@ -33,6 +34,11 @@ class Produk extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class, 'id_supplier');
+    }
+
+    public function stock()
+    {
+        return $this->belongsTo(Stock::class, 'id_stock');
     }
 
     public static function generateInvoiceNumber()

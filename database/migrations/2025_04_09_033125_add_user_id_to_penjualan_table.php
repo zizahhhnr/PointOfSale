@@ -14,7 +14,7 @@ class AddUserIdToPenjualanTable extends Migration
     public function up()
     {
 
-    Schema::table('penjualan', function (Blueprint $table) {
+    Schema::table('penjualans', function (Blueprint $table) {
         $table->unsignedBigInteger('user_id')->after('id_penjualan');
 
         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
