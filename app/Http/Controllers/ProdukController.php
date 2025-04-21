@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Supplier;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -40,7 +41,9 @@ class ProdukController extends Controller
     }
     
         $produks = $query->orderBy('id_produk', 'desc')->paginate(10);
-    
+
+
+       
         // Return ke view dengan data produk
         return view('produks.index', compact('produks', 'search'));
     }
@@ -55,7 +58,8 @@ class ProdukController extends Controller
     {
         $suppliers = Supplier::all();
         $kategoris = Kategori::all(); // Pastikan 'Kategori' adalah model yang benar
-        return view('produks.create', compact('kategoris', 'suppliers'));
+        $stocks = Stock::all();
+        return view('produks.create', compact('kategoris', 'suppliers', 'stocks'));
     }
 
     /**
@@ -70,6 +74,7 @@ class ProdukController extends Controller
     $this->validate($request, [
         // 'no_invoice' => 'required|unique:produks,no_invoice',
         'nama_produk' => 'required|max:255',
+        'id_stock' => 'required|exists:stocks,id_stock',
         'id_kategori' => 'required|exists:kategoris,id_kategori',
         'id_supplier' => 'required|exists:suppliers,id_supplier',
         'harga_dasar' => 'required|numeric',
@@ -89,6 +94,7 @@ class ProdukController extends Controller
     Produk::create([
         'no_invoice' => $noInvoice, // Menggunakan invoice otomatis
         'nama_produk' => $request->nama_produk,
+        'id_stock' => $request->id_stock,
         'id_kategori' => $request->id_kategori,
         'id_supplier' => $request->id_supplier,
         'harga_dasar' => $request->harga_dasar,
@@ -123,7 +129,8 @@ class ProdukController extends Controller
         $produk = Produk::findOrFail($id_produk);
         $kategoris = Kategori::all(); // Fetch the list of categories
         $suppliers = Supplier::all();
-        return view('produks.edit', compact('produk', 'kategoris', 'suppliers'));
+        $stocks = Stock::all();
+        return view('produks.edit', compact('produk', 'kategoris', 'suppliers', 'stocks'));
     }
 
     /**
@@ -139,6 +146,7 @@ class ProdukController extends Controller
         $this->validate($request, [
             // 'no_invoice' => 'required',
             'nama_produk' => 'required|max:255',
+            'id_stock' => 'required|exists:stocks,id_stock',
             'id_kategori' => 'required|exists:kategoris,id_kategori',
             'id_supplier' => 'required|exists:suppliers,id_supplier',
             'harga_dasar' => 'required|numeric',
@@ -148,7 +156,8 @@ class ProdukController extends Controller
      
         $produk = Produk::findOrFail($id_produk); 
         $produk->update([
-            'nama_produk' => $request->nama_produk,
+            'nama_produk' => $request->nama_produk,        
+            'id_stock' => $request->id_stock,
             'id_kategori' => $request->id_kategori,
             'id_supplier' => $request->id_supplier,
             'harga_dasar' => $request->harga_dasar,

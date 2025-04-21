@@ -83,6 +83,12 @@
         </a>
     </li>
     <li class="sidebar-item">
+        <a class="sidebar-link" href="/stocks">
+            <i class="bi bi-diagram-2-fill"></i>
+            <span class="hide-menu">Satuan</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
         <a class="sidebar-link" href="/produks">
             <i class="fas fa-dumpster"></i>
             <span class="hide-menu">Produk</span>

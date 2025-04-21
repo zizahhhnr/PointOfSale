@@ -14,11 +14,12 @@ class Produk extends Model
     protected $fillable = [ 
         'no_invoice',
         'nama_produk',
+        'id_stock',
         'id_kategori',
         'id_supplier',
         'harga_dasar',
         'harga',
-        'stok'
+        'stok',
     ];
 
     public function detail()

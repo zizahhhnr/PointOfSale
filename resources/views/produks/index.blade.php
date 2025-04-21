@@ -33,6 +33,7 @@
                         <th>#</th>
                         <th>No Invoice</th>
                         <th>Nama Produk</th>
+                        <th>Satuan</th>
                         <th>Nama Kategori</th>
                         <th>Nama Supplier</th>
                         <th>Harga Dasar</th>
@@ -47,6 +48,7 @@
                             <td>{{ $loop->iteration }}</td> 
                             <td>{{ $produk->no_invoice }}</td>
                             <td>{{ $produk->nama_produk }}</td>
+                            <td>{{ $produk->stock->satuan }}</td>
                             <td>{{ $produk->kategori->nama_kategori }}</td>
                             <td>{{ $produk->supplier->nama_supplier }}</td>
                             <td>Rp {{ number_format($produk->harga_dasar, 2, ',', '.') }}</td>

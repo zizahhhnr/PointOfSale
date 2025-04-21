@@ -31,6 +31,16 @@
             <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan Nama Produk" required>
 
             <div class="form-group mb-3">
+                <label for="id_stock">Satuan:</label>
+                <select name="id_stock" class="form-control" id="id_stock" required>
+                    <option value="">--Pilih Satuan--</option>
+                    @foreach ($stocks as $stock)
+                        <option value="{{ $stock->id_stock }}">{{ $stock->satuan }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
                 <label for="id_kategori">Nama Kategori:</label>
                 <select name="id_kategori" class="form-control" id="id_kategori" required>
                     <option value="">--Pilih Nama Kategori--</option>
